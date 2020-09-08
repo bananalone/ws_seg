@@ -65,7 +65,8 @@ class GradCam:
             w = np.mean(grad[i])
             feature = features[i]
             feature[feature < 0] = 0 # relu
-            cam += w * feature
+            # cam += w * feature
+            cam += feature * grad[i]
 
 #         print(cam.shape)
         cam[cam < 0] = 0 # relu
